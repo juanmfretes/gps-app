@@ -27,5 +27,9 @@ Permite administrar los vehículos de una empresa (que cuenten con gps), ofrecie
 
 
 
-https://github.com/juanmfretes/gps-app/assets/91751925/0bf957aa-010f-4483-8317-1a95cf4516aa
+
+
+https://github.com/juanmfretes/gps-app/assets/91751925/da91f1f7-6903-42d9-b315-d527eb4714bc
+
+
 
