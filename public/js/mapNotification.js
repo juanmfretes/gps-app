@@ -20,12 +20,6 @@ let openInfoWindowId = -1;
 // =============================================================
 // FUNCIONES
 // =============================================================
-// Retornar string fechaHora con Formato
-const getFormatedDate = (fechaHora) => {
-    const date = new Date(fechaHora);
-    return date.toLocaleString();
-}
-
 // Obtener url para dar color al marcador según el "código"
 const getColoredUrl = function (codigo) {
     return url1 + notificationColor[codigo] + url2;
@@ -45,11 +39,11 @@ const createMarker = (coords, notification) => {
 
 // Obtener el contenido para cada InfoWindows
 const getData = (notification) => {
-    const formatedDateTime = notification.fechaHora.replace(' ', 'T');
+    // const formatedDateTime = notification.fechaHora.replace(' ', 'T');
     let text = `<div id="infoWindow"><h4>Codigo: ${notification.codigo}</h4>`;
     text += `<p>Conductor: ${notification.conductor}</p>`;
     text += `<p>Vehiculo: ${notification.vehiculo}</p>`;
-    text += `<p>FechaHora: ${getFormatedDate(formatedDateTime)}</p></div>`;
+    text += `<p>FechaHora: ${notification.fechaHora}</p></div>`;
     return text;
 }
 

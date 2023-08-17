@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
 
         // USUARIOS NORMALES
         DB::table('users')->insert([
-            'username' => 'qwerty',
+            'username' => 'noadmin1',
             'email' => 'qwerty@gmail.com',
             'password' => Hash::make('12345678'),
             'admin' => false,
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => 'asdfg',
+            'username' => 'noadmin2',
             'email' => 'asdfg@gmail.com',
             'password' => Hash::make('12345678'),
             'admin' => false,

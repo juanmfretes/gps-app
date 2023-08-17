@@ -12,19 +12,18 @@ class EmpresaController extends Controller
 {
     public function index(Request $request)
     {
-        $empresas = Empresa::orderBy('razon_social', 'ASC')->get();
+        $empresas = Empresa::orderBy('razon_social', 'ASC');
 
         // BUSQUEDA DE RAZON SOCIAL ###########################
-        // if ($razon_social = $request->razon_social)
-        //     $empresas->where('razon_social', 'ilike', "%$razon_social%");
+        if ($razon_social = $request->razon_social)
+            $empresas->where('razon_social', 'ilike', "%$razon_social%");
 
         // BUSQUEDA DE RUC ###########################
-        // if ($ruc = $request->ruc)
-        //     $empresas->where('ruc', 'ILIKE', "%$ruc%");
+        if ($ruc = $request->ruc)
+            $empresas->where('ruc', 'ILIKE', "%$ruc%");
 
         // PAGINACION
-        // $empresas =  $empresas->paginate(2);
-        // dd($vehiculos);
+        $empresas =  $empresas->paginate(4);
         return view('components.empresas.index', compact('empresas'));
     }
 
@@ -42,7 +41,6 @@ class EmpresaController extends Controller
 
     public function update(Request $request, $id)
     {
-        info('llegó al update method de empresa');
         $empresa = Empresa::find($id);
 
         // Para verificar que siga siendo único y no de errores se usa el método '->ignore()'
@@ -69,18 +67,12 @@ class EmpresaController extends Controller
 
     public function store(Request $request)
     {
-        info($request);
-        info('LLegó al store de EmpresaController');
-        // dd($request);
-
         $request->validate([
             'razon_social' => 'required|unique:empresa,razon_social', // único
             'ruc' => 'required|unique:empresa,ruc', // único
             'direccion' => 'required|string',
             'telefono' => 'required|unique:empresa,telefono', // único
         ]);
-
-        // info('pasó la validación de la Empresa');
 
         Empresa::create($request->all());
 

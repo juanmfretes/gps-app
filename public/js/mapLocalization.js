@@ -30,12 +30,6 @@ const getInitialLocation = () => {
     return { lat: -25.3261237, lng: -57.5550702 };
 };
 
-// Retornar string fechaHora con Formato
-const getFormatedDate = (fechaHora) => {
-    const date = new Date(fechaHora);
-    return date.toLocaleString();
-}
-
 // Crear Marcador
 const createMarker = (coords, vehicle) => {
     return new google.maps.Marker({
@@ -47,14 +41,12 @@ const createMarker = (coords, vehicle) => {
 
 // Obtener el contenido para cada InfoWindows
 const getData = (vehicle) => {
-    const formatedDateTime = vehicle.fechaHora.replace(' ', 'T');
-
     let text = `<div id="infoWindow"><h4>Imei: ${vehicle.imei}</h4>`;
     text += `<p>Conductor: ${vehicle.conductor}</p>`;
     text += `<p>Vehiculo: ${vehicle.vehiculo}</p>`;
     text += `<p>Chapa: ${vehicle.chapa}</p>`;
     text += `<p>Velocidad: ${vehicle.speed}</p>`;
-    text += `<p>FechaHora: ${getFormatedDate(formatedDateTime)}</p></div>`;
+    text += `<p>FechaHora: ${vehicle.fechaHora}</p></div>`;
     return text;
 }
 
@@ -178,6 +170,7 @@ async function initMap() {
             // VERIFICAR QUE NO SEA LA MISMA LOCALIZACION (repetido)
             const newLoc = newLocations.get(vehicle);
             const lastLoc = lastLocations.get(vehicle);
+
             if (newLoc.fechaHora <= lastLoc.fechaHora) {
                 return;
             };
@@ -240,7 +233,7 @@ async function initMap() {
             // Verificar si el infowindow está abierto
             if (infoWindowData.vehicle === vehicle && infoWindowData.is_open) openInfoWindow(infoWindow, vehicle)
         });
-    }, 5000);
+    }, 10000);
 }
 
 initMap();

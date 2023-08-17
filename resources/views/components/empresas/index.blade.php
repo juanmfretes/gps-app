@@ -22,7 +22,7 @@
         <p id="deleteModalContent"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="btnBorrarEmpresa">Borrar</button>
+        <button type="button" class="btn btn-danger" id="btnModalBorrarEmpresa">Borrar</button>
         <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -102,11 +102,11 @@
                       <a href="{{ route("components.empresas.show", $empresa->id) }}" class="view" title="Ver" data-toggle="tooltip"><i class="fa fa-fw fa-eye"></i></a>
                       <a href="{{ route("components.empresas.edit", $empresa->id) }}" class="edit px-2" title="Editar" data-toggle="tooltip"><i class="fa fa-fw fa-edit"></i></a>
                       {{-- Hidden Delete form --}}
-                      <form class="deleteForm" style="display: inline;" method="POST" action="{{ route('components.empresas.destroy', $empresa->id) }}">
+                      <form class="deleteForm" style="display: inline;" title="Borrar" data-toggle="tooltip" method="POST" action="{{ route('components.empresas.destroy', $empresa->id) }}">
                         @csrf
                         @method('DELETE')
-                        {{-- <button class="btnFormDeleteEmpresa" data-razon-social="{{ $empresa->razon_social }}" style="background: none; border: none; display: inline; padding: 0;" data-toggle="modal" data-target="#deleteEmpresa"><i class="fa fa-fw fa-trash" style="color: red;"></i></b> --}}
-                        <button class="btnFormDeleteEmpresa" data-razon-social="{{ $empresa->razon_social }}" style="background: none; border: none; display: inline; padding: 0;"><i class="fa fa-fw fa-trash" style="color: red;"></i></b>
+                        
+                        <button class="btnFormDeleteEmpresa" data-razon-social="{{ $empresa->razon_social }}" style="background: none; border: none; display: inline; padding: 0;" data-toggle="modal" data-target="#deleteEmpresa"><i class="fa fa-fw fa-trash" style="color: red;"></i></b>
                       </form>
                     </td>
                   </tr>
@@ -118,7 +118,7 @@
       </div>
 
       <div class="row mx-1 d-flex justify-content-center">
-        {{-- <div class="mt-4">{{ $empresas->appends(request()->only('razon_social','ruc'))->links() }}</div> --}}
+        <div class="mt-4">{{ $empresas->appends(request()->only('razon_social','ruc'))->links() }}</div>
       </div>
     </div>
   </div>

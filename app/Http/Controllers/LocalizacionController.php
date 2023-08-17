@@ -15,7 +15,7 @@ class LocalizacionController extends Controller
 
         $imeiList = localizacion::distinct('vehiculo_id')->select('vehiculo_id')->orderBy('vehiculo_id')->get()->all();
 
-        // Condición para usuarios NORMALES (Sólo pueden ver los vehículos de su empresa)
+        // Condición para usuarios NORMALES (Sólo pueden ver los vehículos de su empresa) 
 
         $lastLocations = [];
 
@@ -23,6 +23,8 @@ class LocalizacionController extends Controller
             $currentVehiculoId = $value['vehiculo_id'];
             // Obtener las última localización de un vehículo específico
             $lastLocation = localizacion::with(['vehiculo:id,imei,conductor,marca,modelo,chapa,empresa_id'])->where('vehiculo_id', $currentVehiculoId)->orderBy('fechaHora', 'DESC')->first();
+            // Formatear fechaHora
+            $dateFormatted = date('d/m/Y H:i:s', strtotime($lastLocation['fechaHora']));
 
             $lastLocations[] = [
                 'imei' => $lastLocation['vehiculo']['imei'],
@@ -33,7 +35,7 @@ class LocalizacionController extends Controller
                 'chapa' => $lastLocation['vehiculo']['chapa'],
                 'empresa_id' => $lastLocation['vehiculo']['empresa_id'],
                 'speed' => $lastLocation['speed'],
-                'fechaHora' => $lastLocation['fechaHora']
+                'fechaHora' => $dateFormatted
             ];
         }
 

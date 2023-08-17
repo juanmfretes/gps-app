@@ -22,7 +22,7 @@
         <p id="deleteModalContent"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="btnBorrarVehiculo">Borrar</button>
+        <button type="button" class="btn btn-danger" id="btnModalBorrarVehiculo">Borrar</button>
         <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -107,9 +107,10 @@
                                 <a href="{{ route("components.vehiculos.edit", $vehiculo->id) }}" class="edit px-2" title="Editar" data-toggle="tooltip"><i class="fa fa-fw fa-edit"></i></a>
                                 @if(auth()->user()->admin)
                                   {{-- Hidden Delete form --}}
-                                  <form class="deleteForm" style="display: inline;" method="POST" action="{{ route('components.vehiculos.destroy', $vehiculo->id) }}">
+                                  <form class="deleteForm" style="display: inline;" title="Borrar" data-toggle="tooltip" method="POST" action="{{ route('components.vehiculos.destroy', $vehiculo->id) }}">
                                     @csrf
                                     @method('DELETE')
+                                    
                                     <button class="btnFormDeleteVehicle" data-vehiculo-imei="{{ $vehiculo->imei }}" style="background: none; border: none; display: inline; padding: 0;" data-toggle="modal" data-target="#deleteVehicle"><i class="fa fa-fw fa-trash" style="color: red;"></i></b>
                                   </form>
                                 @endif

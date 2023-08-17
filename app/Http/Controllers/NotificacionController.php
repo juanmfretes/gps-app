@@ -14,14 +14,18 @@ class NotificacionController extends Controller
         $id = (int) $vehicleId;
         $allNotifications = Notificacion::with(['vehiculo:id,conductor,marca,modelo'])->select('id', 'lat', 'lng', 'codigo', 'fechaHora', 'vehiculo_id')->where('vehiculo_id', $id)->get()->all();
 
+
         $notifications = [];
         foreach ($allNotifications as $notification) {
+            // Formatear fechaHora
+            $dateFormatted = date('d/m/Y H:i:s', strtotime($notification['fechaHora']));
+
             $notifications[] = [
                 'id' => $notification['id'],
                 'lat' => $notification['lat'],
                 'lng' => $notification['lng'],
                 'codigo' => $notification['codigo'],
-                'fechaHora' => $notification['fechaHora'],
+                'fechaHora' => $dateFormatted,
                 'conductor' => $notification['vehiculo']['conductor'],
                 'vehiculo' => "{$notification['vehiculo']['marca']} {$notification['vehiculo']['modelo']}"
             ];

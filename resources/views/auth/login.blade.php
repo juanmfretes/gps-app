@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header text-center">
                     <a href="/"><img class="logo-img" src="{{ asset('assets/images/gps-app-logo-login.png')}}" style="max-width: 200px; " alt="logo"></a>
-                    <span class="splash-description">Please enter your user information.</span>
+                    <span class="splash-description">Favor ingrese sus credenciales</span>
                 </div>
 
                 <div class="card-body">
@@ -38,17 +38,17 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <div class="col-md-6 mx-auto">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Recuérdame') }}
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row mb-0">
                             <div class="col-md-7 d-flex flex-column justify-content-center mx-auto">

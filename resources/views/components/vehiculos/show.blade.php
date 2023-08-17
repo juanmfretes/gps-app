@@ -1,8 +1,33 @@
 @extends('layouts.main')
 
+@push('body-link')
+<script src="{{ asset("js/app.js") }}"></script>
+@endpush
+
 @section('title', 'GPS App | Ver datos del Vehículo')
 
 @section('content')
+
+{{-- MODAL WINDOW PARA BORRAR UN VEHICULO --}}
+<div class="modal fade" id="deleteVehicle" tabindex="-1" aria-labelledby="deleteVehicle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Borrar vehiculo </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteModalContent">¿Está seguro de que desea borrar el vehículo con el Imei {{ $vehiculo->imei }}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="btnModalBorrarVehiculo">Borrar</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="card" style="max-width: 500px;">
     <div class="card-header card-title">
@@ -56,15 +81,16 @@
 
         {{-- <button type="submit" class="btn btn-primary">Crear</button> --}}
         <div class="form-group d-flex justify-content-center row mx-1 mb-0">
-            <a href="{{ route('components.vehiculos.edit', $vehiculo->id) }}" class="btn btn-outline-primary mr-2">Edit</a>
+            <a href="{{ route('components.vehiculos.edit', $vehiculo->id) }}" class="btn btn-outline-primary mr-2">Editar</a>
             @if(auth()->user()->admin)
-                <form style="display: inline;" method="POST" action="{{ route('components.vehiculos.destroy', $vehiculo->id) }}">
+                <form style="display: inline;" class="deleteForm" method="POST" action="{{ route('components.vehiculos.destroy', $vehiculo->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-outline-danger">Delete</button>
+                    
+                    <button class="btn btn-outline-danger" id="btnDeleteVehicleShow" data-toggle="modal" data-target="#deleteVehicle">Borrar</button>
                 </form>
             @endif
-            <a href="{{ route('components.vehiculos.index') }}" class="btn btn-outline-dark ml-2">Cancel</a>
+            <a href="{{ route('components.vehiculos.index') }}" class="btn btn-outline-dark ml-2">Cancelar</a>
         </div>
     </div>
 </div>
