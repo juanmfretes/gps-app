@@ -4,7 +4,7 @@
 - en el archivo config.js definir el host y el puerto del backend que recibirá los datos
 
 
-# NOTIFICACIONES
+# INSERTAR NOTIFICACIONES DE EJEMPLO
     EJECUCION
         node syncNotificacion
     REQUEST
@@ -20,7 +20,7 @@
     RESPONSES
         Para indicar inserción correcta, responder con: {ok: 'ok'}
 
-# LOCALIZACIONES
+# SIMULAR RECORRIDO DE VEHÍCULO EN TIEMPO REAL
     EJECUCION
         node syncLocalizacion
     REQUEST
@@ -39,7 +39,7 @@
         
     OBSERVACIONES
     - El imei por defecto es '2749572958'
-    - Se envia una coordenada cada 10 segundos aprox.
+    - Se envia una coordenada cada 5 segundos aprox.
     - Si NO se recibe un objeto con el campo ok como respuesta, enviará de vuelta la misma coordenada 
     hasta que se inserte correctamente. 
     - El campo fecha de una coordenada siempre se actualiza (no importa si falla), esto para simular 

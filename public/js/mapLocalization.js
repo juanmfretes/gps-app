@@ -233,7 +233,7 @@ async function initMap() {
             // Verificar si el infowindow está abierto
             if (infoWindowData.vehicle === vehicle && infoWindowData.is_open) openInfoWindow(infoWindow, vehicle)
         });
-    }, 10000);
+    }, 5000);
 }
 
 initMap();

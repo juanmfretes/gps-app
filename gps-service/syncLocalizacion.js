@@ -29,7 +29,7 @@ const start = async () => {
     await syncLocalizacion(i ? parseInt(i) : 0);
     setTimeout(async () => {
         start();
-    }, 10000);
+    }, 5000);
 }
 
 start();
