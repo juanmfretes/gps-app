@@ -23,6 +23,12 @@ Permite administrar los vehículos de una empresa (que cuenten con gps), ofrecie
 - Solo puede Editar Vehículos de su propia empresa
 - Solo tiene acceso a los vehículos de su empresa (Localizaciones y Notificaciones)
 
+## Configuraciones iniciales
+- Ejecutar migraciones y seeders:
+  Esto crea 3 usuarios: admin, noadmin1 y noadmin2 (password: 12345678 para todos)
+- Ejecutar el simulador de vehículo ubicado en /gps-service (ver readme)
+  OBS: el mapa se muestra vacío si no hay entradas de localizaciones o notificaciones
+
 ## Demo:
 
 
