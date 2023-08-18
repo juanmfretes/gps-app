@@ -119,7 +119,7 @@ class VehiculoController extends Controller
                 return redirect()->route('components.vehiculos.index')->with('error', 'No se puede borrar el vehículo ya que posee Localizaciones y/o Notificaciones. Borrar datos asociados primero.');
             }
 
-            // $vehiculo->delete();
+            $vehiculo->delete();
 
             return redirect()->route('components.vehiculos.index')->with('message', 'El vehículo ha sido eliminado exitosamente.');
         } catch (Exception $e) {

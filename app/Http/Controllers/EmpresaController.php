@@ -92,7 +92,7 @@ class EmpresaController extends Controller
                 return redirect()->route('components.empresas.index')->with('error', 'No se puede borrar la empresa ya que posee Usuarios y/o Vehiculos. Borrar datos asociados primero.');
             }
 
-            // $empresa->delete();
+            $empresa->delete();
 
             return redirect()->route('components.empresas.index')->with('message', 'La empresa ha sido eliminada exitosamente.');
         } catch (Exception $e) {
