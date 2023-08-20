@@ -41,5 +41,14 @@ Permite administrar los vehículos de una empresa (que cuenten con gps), ofrecie
 5. Ejecutar comando 'node syncLocalizacion' para poder observar un vehículo en tiempo real en el mapa
 - OBS: El vehículo simulado tiene por defecto el imei '2749572958' que pertence a NGO SAECA (Chapa: KFB 957)
 
+## Demo
+
+
+https://github.com/juanmfretes/gps-app/assets/91751925/2cbe5e9e-18e9-46dd-bbd5-978eda335362
+
+
+
+
+https://github.com/juanmfretes/gps-app/assets/91751925/6530dc95-3633-4b09-87a1-3698a09881a0
 
 
